@@ -106,14 +106,24 @@ sudo sed -i "" s~/Library/WebServer/Documents~/Users/$USERNAME/Sites~g /etc/apac
 sudo sed -i "" s~"AllowOverride None"~"AllowOverride all"~g /etc/apache2/httpd.conf
 echo "Include /private/etc/apache2/sites.conf" | sudo tee -a /etc/apache2/httpd.conf
 sudo touch /etc/apache2/sites.conf
-sudo tee /etc/apache2/sites.conf >/dev/null <<EOF
-SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+sudo tee /etc/apache2/sites.conf >/dev/null <<'EOF'
+# Workaround for missing Authorization header under CGI/FastCGI Apache:
+<IfModule setenvif_module>
+  SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+</IfModule>
+
+EOF
+
+sudo tee -a /etc/apache2/sites.conf >/dev/null <<EOF
+# Serve ~/Sites at http://localhost
 ServerName localhost
+
 <VirtualHost *:80>
-   ServerName localhost
-   DocumentRoot /Users/$USERNAME/Sites
+  ServerName localhost
+  DocumentRoot /Users/$USERNAME/Sites
 </VirtualHost>
 
+# Serve ~/Sites/laravel/* at http://*.laravel.localhost
 <VirtualHost *:80>
   ServerName laravel.localhost
   ServerAlias *.laravel.localhost
