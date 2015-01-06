@@ -1,14 +1,21 @@
 #!/bin/bash -f
 
+# PlistBuddy is a command for writing complex Plist values
 PLISTBUDDY=/usr/libexec/PlistBuddy
+
+# We'll need our username
 USERNAME=`whoami`
+
+# Work out of a temp directory
 cd /tmp
 
 # Make a basic .emacs file
 echo '; highlighting should work
 (transient-mark-mode 1)
+; put backups in /tmp
 (setq backup-directory-alist
 `((".*" . ,temporary-file-directory)))
+; put autosaves in /tmp
 (setq auto-save-file-name-transforms
 `((".*" ,temporary-file-directory t)))
 ' > ~/.emacs
@@ -38,7 +45,6 @@ brew install wget
 # Set up pip and AWS CLI
 sudo easy_install pip
 sudo pip install awscli
-sudo ln -s /usr/local/bin/aws /usr/bin/aws
 
 # Give /usr/local normal permissions
 sudo chown -R $USERNAME:staff /usr/local
@@ -68,23 +74,6 @@ brew install mcrypt
 brew install pkg-config
 brew install pcre
 brew install dnsmasq
-
-# Make local paths available globally
-sudo ln -s /usr/local/bin/convert /usr/bin/convert
-sudo ln -s /usr/local/bin/gs /usr/bin/gs
-sudo ln -s /usr/local/bin/pdfinfo /usr/bin/pdfinfo
-sudo ln -s /usr/local/bin/pdftk /usr/bin/pdftk
-
-# Make MySQL, Redis, and beanstalkd autostart
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
-ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
-ln -sfv /usr/local/opt/beanstalk/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.beanstalk.plist
-
-# Make Apache autostart
-sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 # Make hosting environment
 mkdir -p ~/Sites/laravel
@@ -118,6 +107,7 @@ sudo sed -i "" s~"AllowOverride None"~"AllowOverride all"~g /etc/apache2/httpd.c
 echo "Include /private/etc/apache2/sites.conf" | sudo tee -a /etc/apache2/httpd.conf
 sudo touch /etc/apache2/sites.conf
 sudo tee /etc/apache2/sites.conf >/dev/null <<EOF
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
 ServerName localhost
 <VirtualHost *:80>
    ServerName localhost
@@ -161,6 +151,7 @@ source ~/.bash_profile
 rvm install ruby
 gem install compass
 gem install rails
+gem install scss-lint
 
 # Set up global .gitconfig
 echo What is your first name?
@@ -177,6 +168,7 @@ git config --global color.ui true
 git config --global core.excludesfile /Users/$USERNAME/.gitignore
 git config --global core.whitespace trailing-space,space-before-tab
 
+# Make a starter .gitignore
 echo '*~
 *#
 *.sql
@@ -186,6 +178,11 @@ echo '*~
 .iml
 __MACOSX
 .sass-cache
+node_modules
+sass_extensions
+lib/
+bower_components
+_ide_helper.php
 npm-debug.log' > ~/.gitignore
 
 # Set hostname to localhost
@@ -218,5 +215,23 @@ extension=pcntl.so
 extension=mcrypt.so
 EOF
 
-# Restart Apache
+# Make local paths available globally
+sudo ln -s /usr/local/bin/aws /usr/bin/aws
+sudo ln -s /usr/local/bin/convert /usr/bin/convert
+sudo ln -s /usr/local/bin/gs /usr/bin/gs
+sudo ln -s /usr/local/bin/pdfinfo /usr/bin/pdfinfo
+sudo ln -s /usr/local/bin/pdftk /usr/bin/pdftk
+
+# Make MySQL, Redis, and beanstalkd autostart
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+ln -sfv /usr/local/opt/beanstalk/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.beanstalk.plist
+
+# Make Apache autostart
+sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
+# Restart Apache in case it was running
 sudo apachectl -k restart
