@@ -233,6 +233,7 @@ sudo ln -s /usr/local/bin/pdfinfo /usr/bin/pdfinfo
 sudo ln -s /usr/local/bin/pdftk /usr/bin/pdftk
 
 # Make MySQL, Redis, and beanstalkd autostart
+mkdir -p ~/Library/LaunchAgents
 ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
