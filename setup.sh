@@ -147,8 +147,9 @@ sudo sed -i '' 's~mysqli.default_socket =~mysqli.default_socket=/tmp/mysql.sock~
 sudo /usr/local/pear/bin/pecl install Imagick-beta --with-imagick=/usr/local
 
 # Set up Node.js
-wget http://nodejs.org/dist/v0.10.33/node-v0.10.33.pkg
-sudo installer -package node-v0.10.33.pkg -target "/Volumes/Macintosh HD"
+wget http://nodejs.org/dist/v0.12.0/node-v0.12.0.pkg
+sudo installer -package node-v0.12.0.pkg -target "/Volumes/Macintosh HD"
+rm node-v0.12.0.pkg
 sudo chown -R $USERNAME:staff /usr/local
 npm install -g bower
 npm install -g eslint
