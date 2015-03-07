@@ -68,8 +68,6 @@ brew install mysql
 brew install redis
 brew install beanstalkd
 brew install poppler
-brew install caskroom/cask/brew-cask
-brew cask install pdftk
 brew install mcrypt
 brew install pkg-config
 brew install pcre
