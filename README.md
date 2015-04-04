@@ -57,4 +57,11 @@ Does the following:
 
 
 ## TODO:
-- @todo
+- Install latest versions of all browsers
+- Add default dock
+- Install latest Java JDK
+- Install the legacy JDK IntelliJ products needs
+- Install Sublime Text 3
+- Automate GitLab setup
+- Make autostarting beanstalkd and redis and mysql packages optional
+- …and more!
