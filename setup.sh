@@ -159,9 +159,8 @@ npm install -g karma-cli
 \curl -sSL https://get.rvm.io | bash -s stable
 source ~/.bash_profile
 rvm install ruby
-gem install compass
-gem install rails
-gem install scss-lint
+# Install Ruby Gems
+sh ./gems.sh
 
 # Set up global .gitconfig
 echo What is your first name?
