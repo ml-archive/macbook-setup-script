@@ -1,4 +1,4 @@
 #!/bin/bash -f
 
 sudo pip install awscli
-pip install awsebcli
+sudo pip install awsebcli
