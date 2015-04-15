@@ -44,7 +44,9 @@ brew install wget
 
 # Set up pip and AWS CLI
 sudo easy_install pip
-sudo pip install awscli
+
+# Install Python Packages
+. pips.sh
 
 # Give /usr/local normal permissions
 sudo chown -R $USERNAME:staff /usr/local
@@ -160,10 +162,7 @@ npm install -g karma-cli
 source ~/.bash_profile
 rvm install ruby
 # Install Ruby Gems
-sh ./gems.sh
-
-# Install Python Packages
-sh ./pips.sh
+. gems.sh
 
 # Set up global .gitconfig
 echo What is your first name?
