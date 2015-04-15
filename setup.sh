@@ -163,6 +163,9 @@ gem install compass
 gem install rails
 gem install scss-lint
 
+# Install Python Packages
+sh ./pips.sh
+
 # Set up global .gitconfig
 echo What is your first name?
 read FIRSTNAME
