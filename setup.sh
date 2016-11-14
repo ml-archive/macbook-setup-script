@@ -46,7 +46,7 @@ brew install wget
 sudo easy_install pip
 
 # Install Python Packages
-. pips.sh
+sh pips.sh
 
 # Give /usr/local normal permissions
 sudo chown -R $USERNAME:staff /usr/local
@@ -74,6 +74,10 @@ brew install mcrypt
 brew install pkg-config
 brew install pcre
 brew install dnsmasq
+
+# Packages needed to build new swift versions from source
+brew install cmake
+brew install ninja
 
 # Make hosting environment
 mkdir -p ~/Sites/laravel
@@ -162,7 +166,7 @@ npm install -g karma-cli
 source ~/.bash_profile
 rvm install ruby
 # Install Ruby Gems
-. gems.sh
+sh gems.sh
 
 # Set up global .gitconfig
 echo What is your first name?
