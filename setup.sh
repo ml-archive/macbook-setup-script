@@ -25,6 +25,7 @@ sudo scutil --set HostName localhost
 
 # grant this user access to the sudo commands without passwords
 # add all required cmds to the CMDS alias
+sudo mkdir -p /etc/sudoers.d
 sudo tee /etc/sudoers.d/$USER <<END
 $USER $(hostname) = NOPASSWD: rm, tee, apachectl, launchctl, brew, sed, touch, easy_install, pip, installer, mkdir, cp, chown
 END
