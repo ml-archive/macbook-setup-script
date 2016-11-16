@@ -92,11 +92,11 @@ EOF
 
 # Start PHP installations.
 brew install php56 --with-apache --with-postgresql --with-phpdbg --with-mssql --with-pear --with-phpdbg
-brew install php56-couchbase php56-event php56-gearman php56-geoip php56-kafka.rb php56-imagick php56-mcrypt php56-memcached php56-mongodb php56-pdo-pgsql php56-redis php56-solr php56-xdebug php56-yaml
+brew install php56-couchbase php56-event php56-gearman php56-geoip php56-kafka php56-imagick php56-mcrypt php56-memcached php56-mongodb php56-pdo-pgsql php56-redis php56-solr php56-xdebug php56-yaml
 brew unlink php56
 
 brew install php70 --with-apache --with-postgresql --with-phpdbg --with-mssql --with-pear --with-phpdbg
-brew install php70-couchbase php70-event php70-gearman php70-geoip php70-kafka.rb php70-imagick php70-mcrypt php70-memcached php70-mongodb php70-pdo-pgsql php70-redis php70-solr php70-xdebug php70-yaml
+brew install php70-couchbase php70-event php70-gearman php70-geoip php70-kafka php70-imagick php70-mcrypt php70-memcached php70-mongodb php70-pdo-pgsql php70-redis php70-solr php70-xdebug php70-yaml
 
 # Get sphp
 curl -L https://raw.githubusercontent.com/sgotre/sphp-osx/master/sphp > /usr/local/bin/sphp
