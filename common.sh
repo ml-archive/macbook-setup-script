@@ -102,7 +102,7 @@ rm sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 
 # Set up Slack
 wget "https://slack.com/ssb/download-osx" -O $HOME/Downloads/Slack-macOS.zip
-unzip $HOME/Downloads/Slack-macOS.zip
+unzip $HOME/Downloads/Slack-macOS.zip -d $HOME/Downloads
 mv $HOME/Downloads/Slack.app /Applications/Slack.app
 open /Applications/Slack.app
 rm $HOME/Downloads/Slack-macOS.zip

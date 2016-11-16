@@ -37,7 +37,6 @@ TERMINAL_CONF_PATH=~/Library/Preferences/$TERMINAL_CONF.plist
 $PLISTBUDDY -c "Set 'Default Window Settings' Pro" $TERMINAL_CONF_PATH
 $PLISTBUDDY -c "Set 'Startup Window Settings' Pro" $TERMINAL_CONF_PATH
 $PLISTBUDDY -c "Add 'Window Settings:Pro:useOptionAsMetaKey' bool YES" $TERMINAL_CONF_PATH
-defaults read com.apple.Terminal
 
 TAB_KEY_SYMBOL="\\U21e5" # Note the backslash-escaped backslash.
 COMMAND_KEY_SYMBOL="@"
