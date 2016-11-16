@@ -99,6 +99,9 @@ cp -r /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}/Sequel\ Pro.app /Appli
 hdiutil unmount /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}
 rm sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 
-
 # Set up Slack
 wget "https://slack.com/ssb/download-osx" -O $HOME/Downloads/Slack-macOS.zip
+unzip $HOME/Downloads/Slack-macOS.zip
+mv $HOME/Downloads/Slack.app /Applications/
+open /Applications/Slack.app
+rm $HOME/Downloads/Slack-macOS.zip

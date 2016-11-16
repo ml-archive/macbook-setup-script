@@ -46,7 +46,7 @@ perl -i -0pe 's~<IfModule dir_module>\
 \
 <FilesMatch \\.php\$>\
     SetHandler application/x-httpd-php\
-</FilesMatch>~' httpd.conf
+</FilesMatch>~' /usr/local/etc/apache2/2.4/httpd.conf
 
 # Enable .htaccess files
 sudo sed -i "" s~"AllowOverride None"~"AllowOverride all"~g /usr/local/etc/apache2/2.4/httpd.conf
