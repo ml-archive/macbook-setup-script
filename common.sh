@@ -97,6 +97,7 @@ wget "https://github.com/sequelpro/sequelpro/releases/download/release-${SEQUEL_
 hdiutil mount sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 cp -r /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}/Sequel\ Pro.app /Applications/
 hdiutil unmount /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}
+open /Applications/Sequel\ Pro.app
 rm sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 
 # Set up Slack
