@@ -63,7 +63,6 @@ Does the following:
 - Install the legacy JDK IntelliJ products needs
 - Install Sublime Text 3
 - Automate GitLab setup
-- Automate setup of Fuzz CLI
 - Make autostarting beanstalkd and redis and mysql packages optional
 - Set date.timezone to America/New_York in /etc/php.ini
 - touch ~/.ssh/config

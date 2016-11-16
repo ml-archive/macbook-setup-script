@@ -49,7 +49,7 @@ perl -i -0pe 's~<IfModule dir_module>\
 </FilesMatch>~' /usr/local/etc/apache2/2.4/httpd.conf
 
 # Enable .htaccess files
-sudo sed -i "" s~"AllowOverride None"~"AllowOverride all"~g /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" 's~AllowOverride NoneAllowOverride all~g' /usr/local/etc/apache2/2.4/httpd.conf
 
 # Normalize logging to use /var/log/apache2
 sudo sed -i "" 's~ErrorLog "/usr/local/var/log/apache2/error_log"~ErrorLog "/var/log/apache2/error_log"~g' /usr/local/etc/apache2/2.4/httpd.conf
@@ -60,7 +60,7 @@ echo "Include /usr/local/etc/apache2/2.4/sites.conf" | sudo tee -a /usr/local/et
 
 # Setup basic sites.conf vhosts.
 sudo touch /usr/local/etc/apache2/2.4/sites.conf
-sudo tee /usr/local/etc/apache2/2.4/sites.conf >/dev/null <<'EOF'
+sudo tee /usr/local/etc/apache2/2.4/sites.conf >/dev/null <<EOF
 # Workaround for missing Authorization header under CGI/FastCGI Apache:
 <IfModule setenvif_module>
   SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
@@ -86,7 +86,7 @@ EOF
 
 # Create start phpinfo file
 touch $HOME/Sites/phpinfo.php
-tee $HOME/Sites/phpinfo.php >/dev/null <<'EOF'
+tee $HOME/Sites/phpinfo.php >/dev/null <<EOF
 <?php phpinfo();
 EOF
 
