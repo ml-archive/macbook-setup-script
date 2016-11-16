@@ -91,7 +91,7 @@ tee $HOME/Sites/phpinfo.php >/dev/null <<EOF
 EOF
 
 # Start PHP installations.
-brew install php56 --with-apache --with-postgresql --with-phpdbg --with-mssql --with-pear --with-phpdbg
+brew install php56 --with-apache --with-phpdbg --with-mssql
 brew install php56-couchbase
 brew install php56-event
 brew install php56-gearman
@@ -104,7 +104,7 @@ brew install php56-solr
 brew install php56-xdebug
 brew unlink php56
 
-brew install php70 --with-apache --with-postgresql --with-phpdbg --with-mssql --with-pear --with-phpdbg
+brew install php70 --with-apache --with-phpdbg --with-mssql
 brew install php70-couchbase
 brew install php70-event
 brew install php70-gearman
