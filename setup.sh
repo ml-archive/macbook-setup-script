@@ -26,13 +26,8 @@ sudo scutil --set HostName localhost
 # grant this user access to the sudo commands without passwords
 # add all required cmds to the CMDS alias
 sudo tee /etc/sudoers.d/$USER <<END
-$USER $(hostname) = NOPASSWD: rm, tee, /usr/sbin/adduser, /bin/rm, ...
+$USER $(hostname) = NOPASSWD: rm, tee, apachectl, launchctl, brew, sed, touch, easy_install, pip, installer, mkdir, cp, chown
 END
-
-
-# then, remove the sudo access
-sudo /bin/rm /etc/sudoers.d/$USER
-sudo -k
 
 # Make a basic .emacs file
 echo '; highlighting should work
@@ -83,3 +78,7 @@ sh ruby.sh
 
 # Setup Swift Stuff
 sh swift.sh
+
+# then, remove the sudo access
+sudo rm /etc/sudoers.d/$USER
+sudo -k
