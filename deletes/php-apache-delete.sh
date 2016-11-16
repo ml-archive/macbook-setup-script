@@ -12,7 +12,6 @@ brew uninstall php70-geoip
 brew uninstall php70-imagick
 brew uninstall php70-mcrypt
 brew uninstall php70-mongodb
-brew uninstall php70-pdo-pgsql
 brew uninstall php70-redis
 brew uninstall php70-solr
 brew uninstall php70-xdebug
@@ -26,7 +25,6 @@ brew uninstall php56-geoip
 brew uninstall php56-imagick
 brew uninstall php56-mcrypt
 brew uninstall php56-mongodb
-brew uninstall php56-pdo-pgsql
 brew uninstall php56-redis
 brew uninstall php56-solr
 brew uninstall php56-xdebug

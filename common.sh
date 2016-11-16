@@ -3,9 +3,6 @@
 # Install Xcode command line tools
 xcode-select --install
 
-# Set hostname to localhost
-sudo scutil --set HostName localhost
-
 # Make some default folders
 mkdir -p $HOME/Sites/laravel
 

@@ -99,7 +99,6 @@ brew install php56-geoip
 brew install php56-imagick
 brew install php56-mcrypt
 brew install php56-mongodb
-brew install php56-pdo-pgsql
 brew install php56-redis
 brew install php56-solr
 brew install php56-xdebug
@@ -113,7 +112,6 @@ brew install php70-geoip
 brew install php70-imagick
 brew install php70-mcrypt
 brew install php70-mongodb
-brew install php70-pdo-pgsql
 brew install php70-redis
 brew install php70-solr
 brew install php70-xdebug
