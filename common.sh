@@ -48,7 +48,7 @@ brew install wget
 # Set up XQuartz
 wget https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg
 hdiutil mount XQuartz-2.7.11.dmg
-sudo installer -package /Volumes/XQuartz-2.7.11/XQuartz.pkg -target "/Volumes/Macintosh HD"
+sudo installer -package /Volumes/XQuartz-2.7.11/XQuartz.pkg -target "/"
 hdiutil unmount /Volumes/XQuartz-2.7.11
 rm XQuartz-2.7.11.dmg
 
@@ -102,6 +102,6 @@ rm sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 # Set up Slack
 wget "https://slack.com/ssb/download-osx" -O $HOME/Downloads/Slack-macOS.zip
 unzip $HOME/Downloads/Slack-macOS.zip
-mv $HOME/Downloads/Slack.app /Applications/
+mv $HOME/Downloads/Slack.app /Applications/Slack.app
 open /Applications/Slack.app
 rm $HOME/Downloads/Slack-macOS.zip

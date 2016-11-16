@@ -49,7 +49,7 @@ perl -i -0pe "s~<IfModule dir_module>\
 </FilesMatch>~" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Enable .htaccess files
-sudo sed -i "" "s~AllowOverride NoneAllowOverride all~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~AllowOverride None~AllowOverride all~g" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Normalize logging to use /var/log/apache2
 sudo sed -i "" 's~ErrorLog "/usr/local/var/log/apache2/error_log"~ErrorLog "/var/log/apache2/error_log"~g' /usr/local/etc/apache2/2.4/httpd.conf
