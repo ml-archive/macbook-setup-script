@@ -11,6 +11,11 @@ sudo chown -R $USERNAME:staff /usr/local
 
 # Setup N to manage multiple node versions.
 npm install -g n
+
+# Fix permissions Again...
+sudo chown -R $USERNAME:staff /usr/local
+
+# Now install new nodes through n...
 n lts
 n stable
 n latest
