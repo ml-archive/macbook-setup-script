@@ -1,5 +1,8 @@
 #!/bin/bash -f
 
+# We'll need our username
+USERNAME=`whoami`
+
 # Set up Node.js
 NODE_INSTALL_VERSION=$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')
 curl "https://nodejs.org/dist/latest/node-${NODE_INSTALL_VERSION}.pkg" > "$HOME/Downloads/node-latest.pkg"
@@ -11,9 +14,6 @@ sudo chown -R $USERNAME:staff /usr/local
 
 # Setup N to manage multiple node versions.
 npm install -g n
-
-# Fix permissions Again...
-sudo chown -R $USERNAME:staff /usr/local
 
 # Now install new nodes through n...
 n lts
