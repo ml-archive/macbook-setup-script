@@ -33,11 +33,11 @@ sudo sed -i "" "s~User _www~User $USERNAME~g" /usr/local/etc/apache2/2.4/httpd.c
 sudo sed -i "" "s~Group _www~Group staff~g" /usr/local/etc/apache2/2.4/httpd.conf
 sudo sed -i "" "s~User daemon~User $USERNAME~g" /usr/local/etc/apache2/2.4/httpd.conf
 sudo sed -i "" "s~Group daemon~Group staff~g" /usr/local/etc/apache2/2.4/httpd.conf
-sudo sed -i "" s~/Library/WebServer/Documents~/Users/$USERNAME/Sites~g /usr/local/etc/apache2/2.4/httpd.conf
-sudo sed -i "" s~/usr/local/var/www/htdocs~/Users/$USERNAME/Sites~g /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~/Library/WebServer/Documents~/Users/$USERNAME/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~/usr/local/var/www/htdocs~/Users/$USERNAME/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Set Apache to process php files.
-perl -i -0pe 's~<IfModule dir_module>\
+perl -i -0pe "s~<IfModule dir_module>\
 .*\
 </IfModule>~\
 <IfModule dir_module>\
@@ -46,10 +46,10 @@ perl -i -0pe 's~<IfModule dir_module>\
 \
 <FilesMatch \\.php\$>\
     SetHandler application/x-httpd-php\
-</FilesMatch>~' /usr/local/etc/apache2/2.4/httpd.conf
+</FilesMatch>~" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Enable .htaccess files
-sudo sed -i "" 's~AllowOverride NoneAllowOverride all~g' /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~AllowOverride NoneAllowOverride all~g" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Normalize logging to use /var/log/apache2
 sudo sed -i "" 's~ErrorLog "/usr/local/var/log/apache2/error_log"~ErrorLog "/var/log/apache2/error_log"~g' /usr/local/etc/apache2/2.4/httpd.conf
@@ -118,9 +118,26 @@ brew install php70-redis
 brew install php70-solr
 brew install php70-xdebug
 
+# Rename to global brew location and Disable all php load modules.
+perl -i -0pe 's~LoadModule php5_module .*php55.*libphp5.so~#LoadModule php5_module    /usr/local/opt/php55/libexec/apache2/libphp5.so~' /usr/local/etc/apache2/2.4/httpd.conf
+perl -i -0pe 's~LoadModule php5_module .*php56.*libphp5.so~#LoadModule php5_module    /usr/local/opt/php56/libexec/apache2/libphp5.so~' /usr/local/etc/apache2/2.4/httpd.conf
+perl -i -0pe 's~LoadModule php7_module .*php70.*libphp7.so~#LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~' /usr/local/etc/apache2/2.4/httpd.conf
+perl -i -0pe 's~LoadModule php7_module .*php71.*libphp7.so~#LoadModule php7_module    /usr/local/opt/php71/libexec/apache2/libphp7.so~' /usr/local/etc/apache2/2.4/httpd.conf
+
+# Enable php70
+perl -i -0pe 's~#LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~' /usr/local/etc/apache2/2.4/httpd.conf
+
+# restart apache and open phpinfo.
+sudo apachectl -k restart && open http://localhost/phpinfo.php
+
 # Get sphp
 curl -L https://raw.githubusercontent.com/sgotre/sphp-osx/master/sphp > /usr/local/bin/sphp
 chmod +x /usr/local/bin/sphp
+
+# Hard restart apache.
+sudo apachectl -k stop
+sudo apachectl start
+
 
 # Get Composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin

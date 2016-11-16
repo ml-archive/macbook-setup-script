@@ -6,10 +6,10 @@ if [ ! -f $HOME/.git-completion.bash ]; then
 fi
 
 
-# Setup .bash_aliases file
+# Setup .bash_aliases file if it does not exist.
 if [ ! -f $HOME/.bash_aliases ]; then
 	touch $HOME/.bash_aliases
-	tee $HOME/.bash_profile >/dev/null <<'EOF'
+	tee $HOME/.bash_aliases >/dev/null <<'EOF'
 # Custom Aliases go here
 
 # some more ls aliases
@@ -35,7 +35,7 @@ EOF
 
 fi
 
-# Setup .bash_profile file
+# Setup .bash_profile file if it does not exist.
 if [ ! -f $HOME/.bash_profile ]; then
 	touch $HOME/.bash_profile
 	tee $HOME/.bash_profile >/dev/null <<'EOF'

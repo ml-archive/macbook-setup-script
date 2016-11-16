@@ -44,12 +44,7 @@ COMMAND_KEY_SYMBOL="@"
 SHIFT_KEY_SYMBOL="$"
 CONTROL_KEY_SYMBOL="^"
 
-# Set up a key binding for Zoom
-defaults write -g NSUserKeyEquivalents '{
-  "Zoom"="${COMMAND_KEY_SYMBOL}${SHIFT_KEY_SYMBOL}m";
-}'
-defaults read -g NSUserKeyEquivalents
-
+# Setup hotkeys for terminal tab switching.
 defaults write -app Terminal NSUserKeyEquivalents "{
 	 'Show Next Tab' = '${CONTROL_KEY_SYMBOL}${TAB_KEY_SYMBOL}';
      'Show Previous Tab' = '${CONTROL_KEY_SYMBOL}${SHIFT_KEY_SYMBOL}${TAB_KEY_SYMBOL}';
