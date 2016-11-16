@@ -37,7 +37,7 @@ sudo sed -i "" "s~/Library/WebServer/Documents~/Users/$USERNAME/Sites~g" /usr/lo
 sudo sed -i "" "s~/usr/local/var/www/htdocs~/Users/$USERNAME/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Set Apache to process php files.
-perl -i -0pe "s~<IfModule dir_module>\
+perl -i -0pe 's~<IfModule dir_module>\
 .*\
 </IfModule>~\
 <IfModule dir_module>\
@@ -46,7 +46,7 @@ perl -i -0pe "s~<IfModule dir_module>\
 \
 <FilesMatch \\.php\$>\
     SetHandler application/x-httpd-php\
-</FilesMatch>~" /usr/local/etc/apache2/2.4/httpd.conf
+</FilesMatch>~' /usr/local/etc/apache2/2.4/httpd.conf
 
 # Enable .htaccess files
 sudo sed -i "" "s~AllowOverride None~AllowOverride all~g" /usr/local/etc/apache2/2.4/httpd.conf
