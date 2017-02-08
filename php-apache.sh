@@ -104,7 +104,7 @@ brew install php56-solr
 brew install php56-xdebug
 brew unlink php56
 
-brew install php70 --with-apache --with-phpdbg --with-mssql
+brew install php70 --with-httpd24 --with-phpdbg --with-mssql
 brew install php70-couchbase
 brew install php70-event
 brew install php70-gearman
