@@ -91,7 +91,7 @@ sudo chown -R $USERNAME:staff /usr/local
 # Set up Sequel Pro
 SEQUEL_PRO_INSTALL_VERSION=$(wget -qO- https://github.com/sequelpro/sequelpro/releases/latest | sed -nE 's|.*>release-(.*)</a>|\1|p')
 wget "https://github.com/sequelpro/sequelpro/releases/download/release-${SEQUEL_PRO_INSTALL_VERSION}/sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg" -O $HOME/Downloads/sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
-hdiutil mount sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
+hdiutil mount $HOME/Downloads/sequel-pro-${SEQUEL_PRO_INSTALL_VERSION}.dmg
 cp -r /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}/Sequel\ Pro.app /Applications/
 hdiutil unmount /Volumes/Sequel\ Pro\ ${SEQUEL_PRO_INSTALL_VERSION}
 open /Applications/Sequel\ Pro.app
