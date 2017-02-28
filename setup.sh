@@ -27,6 +27,13 @@ sudo tee /etc/sudoers.d/$USER <<END
 $USER ALL=(ALL) NOPASSWD:ALL
 END
 
+
+# Set some sensible defaults for Finder
+# Show all hidden files by default, and restart Finder to enable.
+defaults write com.apple.finder NewWindowTargetPath file://$HOME # New window starts at $HOME.
+defaults write com.apple.finder AppleShowAllFiles YES
+# killall -HUP Finder # too extreme to kill finder we should figure out how tor re-launch instead.
+
 # Set hostname to localhost
 sudo scutil --set HostName localhost
 
@@ -79,6 +86,9 @@ sh ruby.sh
 
 # Setup Swift Stuff
 sh swift.sh
+
+# Setup Tomcat Stuff
+sh tomcat.sh
 
 # then, remove the sudo access
 sudo rm /etc/sudoers.d/$USER

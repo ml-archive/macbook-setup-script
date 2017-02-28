@@ -53,6 +53,7 @@ Does the following:
 - Sets the hostname to localhost
 - Configures a local DNS resolver to send all *.localhost to 127.0.0.1
 - Installs Sequel Pro
+- Installs Tomcat
 
 
 
