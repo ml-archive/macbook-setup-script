@@ -1,8 +1,5 @@
 #!/bin/bash -f
 
-# We'll need our username
-USERNAME=`whoami`
-
 # Extra Brew Taps
 brew tap homebrew/dupes
 brew tap homebrew/versions
@@ -29,12 +26,12 @@ sudo sed -i "" "s~#LoadModule vhost_alias_module~LoadModule vhost_alias_module~g
 sudo sed -i "" "s~#LoadModule rewrite_module~LoadModule rewrite_module~g" /usr/local/etc/apache2/2.4/httpd.conf # Enable rewrite module
 
 # Setup apache to use proper Users and Group.
-sudo sed -i "" "s~User _www~User $USERNAME~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~User _www~User $USER~g" /usr/local/etc/apache2/2.4/httpd.conf
 sudo sed -i "" "s~Group _www~Group staff~g" /usr/local/etc/apache2/2.4/httpd.conf
-sudo sed -i "" "s~User daemon~User $USERNAME~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~User daemon~User $USER~g" /usr/local/etc/apache2/2.4/httpd.conf
 sudo sed -i "" "s~Group daemon~Group staff~g" /usr/local/etc/apache2/2.4/httpd.conf
-sudo sed -i "" "s~/Library/WebServer/Documents~/Users/$USERNAME/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
-sudo sed -i "" "s~/usr/local/var/www/htdocs~/Users/$USERNAME/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~/Library/WebServer/Documents~/Users/$USER/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
+sudo sed -i "" "s~/usr/local/var/www/htdocs~/Users/$USER/Sites~g" /usr/local/etc/apache2/2.4/httpd.conf
 
 # Set Apache to process php files.
 perl -i -0pe 's~<IfModule dir_module>\
@@ -71,14 +68,14 @@ ServerName localhost
 
 <VirtualHost *:80>
   ServerName localhost
-  DocumentRoot /Users/$USERNAME/Sites
+  DocumentRoot /Users/$USER/Sites
 </VirtualHost>
 
 # Serve ~/Sites/laravel/* at http://*.laravel.localhost
 <VirtualHost *:80>
   ServerName laravel.localhost
   ServerAlias *.laravel.localhost
-  VirtualDocumentRoot /Users/$USERNAME/Sites/laravel/%1/laravel/public
+  VirtualDocumentRoot /Users/$USER/Sites/laravel/%1/laravel/public
   DirectoryIndex index.php
 </VirtualHost>
 EOF
