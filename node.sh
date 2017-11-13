@@ -16,9 +16,9 @@ sudo chown -R $USERNAME:staff /usr/local
 npm install -g n
 
 # Now install new nodes through n...
-n lts
-n stable
-n latest
+sudo n lts
+sudo n stable
+sudo n latest
 
 # Packagers & Build tools
 npm install -g webpack nodemon

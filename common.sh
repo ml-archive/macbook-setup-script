@@ -87,6 +87,9 @@ sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 # Give /usr/local normal permissions
 sudo chown -R $USERNAME:staff /usr/local
+# Give dirs in /usr/local normal permissions. Fix for High Sierra: https://github.com/Homebrew/brew/issues/3228
+sudo chown -R $(whoami) $(brew --prefix)/*
+
 
 # Set up Sequel Pro
 SEQUEL_PRO_INSTALL_VERSION=$(wget -qO- https://github.com/sequelpro/sequelpro/releases/latest | sed -nE 's|.*>release-(.*)</a>|\1|p')

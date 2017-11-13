@@ -93,3 +93,7 @@ sh tomcat.sh
 # then, remove the sudo access
 sudo rm /etc/sudoers.d/$USER
 sudo -k
+
+# Give dirs in /usr/local normal permissions. Fix for High Sierra: https://github.com/Homebrew/brew/issues/3228
+# Do this one last time to make sure we get any newly created dirs.
+sudo chown -R $(whoami) $(brew --prefix)/*
