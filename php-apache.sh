@@ -101,15 +101,27 @@ brew install php70-imagick
 brew install php70-mongodb
 brew install php70-redis
 brew install php70-xdebug
+brew unlink php70
+
+brew install php72 --with-httpd24 --with-phpdbg --with-mssql
+brew install php72-couchbase
+brew install php72-event
+brew install php72-gearman
+brew install php72-geoip
+brew install php72-imagick
+brew install php72-mongodb
+brew install php72-redis
+brew install php72-xdebug
 
 # Rename to global brew location and Disable all php load modules.
 perl -i -0pe 's~LoadModule php5_module .*php55.*libphp5.so~#LoadModule php5_module    /usr/local/opt/php55/libexec/apache2/libphp5.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
 perl -i -0pe 's~LoadModule php5_module .*php56.*libphp5.so~#LoadModule php5_module    /usr/local/opt/php56/libexec/apache2/libphp5.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
 perl -i -0pe 's~LoadModule php7_module .*php70.*libphp7.so~#LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
 perl -i -0pe 's~LoadModule php7_module .*php71.*libphp7.so~#LoadModule php7_module    /usr/local/opt/php71/libexec/apache2/libphp7.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
+perl -i -0pe 's~LoadModule php7_module .*php72.*libphp7.so~#LoadModule php7_module    /usr/local/opt/php72/libexec/apache2/libphp7.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
 
 # Enable php70
-perl -i -0pe 's~#LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~LoadModule php7_module    /usr/local/opt/php70/libexec/apache2/libphp7.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
+perl -i -0pe 's~#LoadModule php7_module    /usr/local/opt/php72/libexec/apache2/libphp7.so~LoadModule php7_module    /usr/local/opt/php72/libexec/apache2/libphp7.so~' /usr/local/opt/apache2/.bottle/etc/httpd/httpd.conf
 
 # restart apache and open phpinfo.
 sudo apachectl -k restart && open http://localhost/phpinfo.php
