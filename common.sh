@@ -29,7 +29,7 @@ git config --global user.name "$FIRSTNAME $LASTNAME"
 git config --global user.email $EMAIL
 git config --global apply.whitespace fix
 git config --global color.ui true
-git config --global core.excludesfile /Users/$USERNAME/.gitignore
+git config --global core.excludesfile /Users/$USER/.gitignore
 git config --global core.whitespace trailing-space,space-before-tab
 
 # Install Homebrew
@@ -48,6 +48,8 @@ hdiutil mount XQuartz-2.7.11.dmg
 sudo installer -package /Volumes/XQuartz-2.7.11/XQuartz.pkg -target "/"
 hdiutil unmount /Volumes/XQuartz-2.7.11
 rm XQuartz-2.7.11.dmg
+
+brew cask install xquartz
 
 # Set up some Homebrew packages
 brew install ImageMagick
@@ -86,7 +88,7 @@ sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 # Give /usr/local normal permissions
-sudo chown -R $USERNAME:staff /usr/local
+sudo chown -R $USER:staff /usr/local
 # Give dirs in /usr/local normal permissions. Fix for High Sierra: https://github.com/Homebrew/brew/issues/3228
 sudo chown -R $(whoami) $(brew --prefix)/*
 
