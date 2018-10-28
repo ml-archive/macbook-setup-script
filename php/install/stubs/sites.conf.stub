@@ -1,0 +1,17 @@
+# Workaround for missing Authorization header under CGI/FastCGI Apache:
+<IfModule setenvif_module>
+  SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+</IfModule>
+
+<VirtualHost *:80>
+  ServerName localhost
+  DocumentRoot /Users/$$USER$$/Sites
+</VirtualHost>
+
+# Serve ~/Sites/laravel/* at http://*.laravel.localhost
+<VirtualHost *:80>
+  ServerName laravel.localhost
+  ServerAlias *.laravel.localhost
+  VirtualDocumentRoot /Users/$$USER$$/Sites/laravel/%1/laravel/public
+  DirectoryIndex index.php
+</VirtualHost>

@@ -1,24 +1,7 @@
 #!/bin/bash -f
 
-# Function to check if a function exists...
-fn_exists()
-{
-    type $1 2>/dev/null | grep -q 'is a function'
-}
-
-# Echo in a fancy way...
-fancy_echo() {
-  local fmt="$1"; shift
-
-  # shellcheck disable=SC2059
-  printf "\n$fmt\n" "$@"
-}
-
 # PlistBuddy is a command for writing complex Plist values
 PLISTBUDDY=/usr/libexec/PlistBuddy
-
-# We'll need our username
-USERNAME=`whoami`
 
 # grant this user access to the sudo commands without passwords
 # add all required cmds to the CMDS alias
@@ -26,7 +9,6 @@ sudo mkdir -p /etc/sudoers.d
 sudo tee /etc/sudoers.d/$USER <<END
 $USER ALL=(ALL) NOPASSWD:ALL
 END
-
 
 # Set some sensible defaults for Finder
 # Show all hidden files by default, and restart Finder to enable.
@@ -73,27 +55,20 @@ sh common.sh
 sh bash-setup.sh
 
 # Setup PHP & Apache
-sh php-apache.sh
+sh php/install/run.sh
 
 # Setup node
-sh node.sh
+sh node/install/run.sh
 
 # Setup Python Packages
-sh python.sh
+sh python/install/run.sh
 
 # Setup Ruby Packages
-sh ruby.sh
+sh ruby/install/run.sh
 
-# Setup Swift Stuff
-sh swift.sh
-
-# Setup Tomcat Stuff
-sh tomcat.sh
+# Setup Ruby Packages
+sh go/install/run.sh
 
 # then, remove the sudo access
 sudo rm /etc/sudoers.d/$USER
 sudo -k
-
-# Give dirs in /usr/local normal permissions. Fix for High Sierra: https://github.com/Homebrew/brew/issues/3228
-# Do this one last time to make sure we get any newly created dirs.
-sudo chown -R $(whoami) $(brew --prefix)/*

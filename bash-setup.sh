@@ -20,9 +20,6 @@ alias l='ls -CF'
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-#IntelliJ Aliases
-alias intellij='idea'
-
 # PHP Aliases
 alias artisan='php artisan'
 
@@ -58,5 +55,8 @@ fi
 export PATH=$PATH:$HOME/bin # For various scripts
 export PATH="~/.composer/vendor/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 EOF
 fi

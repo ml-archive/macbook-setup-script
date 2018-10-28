@@ -1,1 +1,0 @@
-These scripts are for convenience, they delete certain installations.
