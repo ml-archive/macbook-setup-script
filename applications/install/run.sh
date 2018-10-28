@@ -15,3 +15,4 @@ brew cask install visual-studio-code
 brew cask install zeplin
 brew cask install postico
 brew cask install docker
+brew cask install handbrake
