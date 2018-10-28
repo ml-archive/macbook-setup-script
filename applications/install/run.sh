@@ -16,3 +16,4 @@ brew cask install zeplin
 brew cask install postico
 brew cask install docker
 brew cask install handbrake
+brew cask install postman
