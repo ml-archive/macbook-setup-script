@@ -22,6 +22,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # PHP Aliases
 alias artisan='php artisan'
+alias phpunit='vendor/bin/phpunit'
 
 # Python Aliases
 alias manpy='./manage.py'
