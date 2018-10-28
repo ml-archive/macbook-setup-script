@@ -76,3 +76,6 @@ dscacheutil -flushcache
 
 brew services restart dnsmasq
 
+# MySql 8.* fix for Sequel Pro.
+# See: https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded
+mysql -u root --password= -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY ''"
