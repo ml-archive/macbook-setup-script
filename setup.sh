@@ -54,6 +54,9 @@ sh common.sh
 # Setup bash
 sh bash-setup.sh
 
+# Setup Common Packages
+sh mysql/install/run.sh
+
 # Setup PHP & Apache
 sh php/install/run.sh
 

@@ -51,7 +51,6 @@ brew install wget
 brew install ImageMagick
 brew install ghostscript
 brew install autoconf
-brew install mysql
 brew install redis
 brew install beanstalkd
 brew install poppler
@@ -59,8 +58,7 @@ brew install pkg-config
 brew install pcre
 brew install dnsmasq
 
-# Make MySQL, Redis, and beanstalkd autostart
-brew services start mysql
+# Make Redis, and beanstalkd autostart
 brew services start redis
 brew services start beanstalkd
 
@@ -75,7 +73,3 @@ EOF
 dscacheutil -flushcache
 
 brew services restart dnsmasq
-
-# MySql 8.* fix for Sequel Pro.
-# See: https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded
-mysql -u root --password= -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY ''"
