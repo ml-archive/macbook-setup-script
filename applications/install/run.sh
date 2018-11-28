@@ -24,3 +24,6 @@ brew cask install firefox
 brew cask install appium
 brew cask install charles
 brew cask install sublime-text
+brew cask install atom
+brew cask install intellij-idea-ce
+brew cask install intellij-idea
