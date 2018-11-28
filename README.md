@@ -37,12 +37,12 @@ Does the following:
 - Configures a local DNS resolver to send all *.localhost to 127.0.0.1
 - Installs Sequel Pro
 - Installs Slack
+- Install latest Java JDK
+- Install latest versions of all browsers
 
 
 ## TODO:
-- Install latest versions of all browsers
 - Add default dock
-- Install latest Java JDK
 - Install the legacy JDK IntelliJ products needs
 - Automate GitLab setup
 - Set date.timezone to America/New_York in /etc/php.ini
