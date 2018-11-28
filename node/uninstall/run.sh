@@ -19,3 +19,5 @@ sudo n prune
 rm -r /usr/local/n
 rm -r /usr/local/lib/node_modules/
 rm -r /usr/local/include/node/
+
+brew uninstall node

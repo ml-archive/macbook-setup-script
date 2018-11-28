@@ -10,10 +10,7 @@ fi
 
 # Set up Node.js
 echo "${GREEN}Installing... ${BROWN}Nodejs...${NC}"
-NODE_INSTALL_VERSION=$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')
-curl "https://nodejs.org/dist/latest/node-${NODE_INSTALL_VERSION}.pkg" > "$HOME/Downloads/node-latest.pkg"
-sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
-rm $HOME/Downloads/node-latest.pkg
+brew install node
 
 
 echo "${GREEN}Installing... ${BROWN}yarn...${NC}"

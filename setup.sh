@@ -37,22 +37,17 @@ $PLISTBUDDY -c "Set 'Default Window Settings' Pro" $TERMINAL_CONF_PATH
 $PLISTBUDDY -c "Set 'Startup Window Settings' Pro" $TERMINAL_CONF_PATH
 $PLISTBUDDY -c "Add 'Window Settings:Pro:useOptionAsMetaKey' bool YES" $TERMINAL_CONF_PATH
 
-TAB_KEY_SYMBOL="\\U21e5" # Note the backslash-escaped backslash.
-COMMAND_KEY_SYMBOL="@"
-SHIFT_KEY_SYMBOL="$"
-CONTROL_KEY_SYMBOL="^"
-
-# Setup hotkeys for terminal tab switching.
-defaults write -app Terminal NSUserKeyEquivalents "{
-	 'Show Next Tab' = '${CONTROL_KEY_SYMBOL}${TAB_KEY_SYMBOL}';
-     'Show Previous Tab' = '${CONTROL_KEY_SYMBOL}${SHIFT_KEY_SYMBOL}${TAB_KEY_SYMBOL}';
-}"
-
 # Setup Common Packages
 sh common.sh
 
 # Setup bash
 sh bash-setup.sh
+
+# Setup Common Applications
+sh applications/install/run.sh
+
+# Setup Java Environment
+sh java/install/run.sh
 
 # Setup Common Packages
 sh mysql/install/run.sh

@@ -39,12 +39,12 @@ brew doctor
 # Update brew just in case...
 brew update
 
+brew install brew-cask
 brew cask install xquartz
 
 # Packages needed to build new swift versions from source
 brew install cmake
 brew install ninja
-sudo gem install cocoapods
 
 # Set up some Homebrew packages
 brew install wget
@@ -57,6 +57,10 @@ brew install poppler
 brew install pkg-config
 brew install pcre
 brew install dnsmasq
+brew install cloc
+brew install swiftlint
+brew install xctool
+brew install libimobiledevice
 
 # Make Redis, and beanstalkd autostart
 brew services start redis

@@ -11,3 +11,5 @@ brew install python python@2
 pip3 install awscli
 pip3 install awsebcli
 pip3 install virtualenv
+pip3 install lizard
+pip3 install source
