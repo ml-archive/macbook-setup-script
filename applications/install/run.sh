@@ -10,20 +10,13 @@ fi
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-brew cask install slack
-brew cask install sequel-pro
-brew cask install jetbrains-toolbox
-brew cask install visual-studio-code
-brew cask install zeplin
-brew cask install postico
-brew cask install docker
-brew cask install handbrake
-brew cask install postman
-brew cask install google-chrome
-brew cask install firefox
-brew cask install appium
-brew cask install charles
-brew cask install sublime-text
-brew cask install atom
-brew cask install intellij-idea-ce
-brew cask install intellij-idea
+brew install slack --cask
+brew install sequel-pro --cask
+brew install jetbrains-toolbox --cask
+brew install visual-studio-code --cask
+brew install postico --cask
+brew install tableplus --cask
+brew install docker --cask
+brew install handbrake --cask
+brew install postman --cask
+brew install google-chrome --cask

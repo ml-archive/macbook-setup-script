@@ -18,11 +18,11 @@ __MACOSX
 npm-debug.log' > ~/.gitignore
 
 # Set up global .gitconfig
-echo What is your first name?
+printf '%s ' 'What is your first name?'
 read FIRSTNAME
-echo What is your last name?
+printf '%s ' 'What is your last name?'
 read LASTNAME
-echo What is your email?
+printf '%s ' 'What is your email?'
 read EMAIL
 
 git config --global user.name "$FIRSTNAME $LASTNAME"
@@ -32,15 +32,16 @@ git config --global color.ui true
 git config --global core.excludesfile /Users/$USER/.gitignore
 git config --global core.whitespace trailing-space,space-before-tab
 
+mkdir $HOME/bin
+curl -o $HOME/bin/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o $HOME/bin/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
 # Install Homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 
 # Update brew just in case...
 brew update
-
-brew install brew-cask
-brew cask install xquartz
 
 # Packages needed to build new swift versions from source
 brew install cmake
@@ -49,22 +50,18 @@ brew install ninja
 # Set up some Homebrew packages
 brew install wget
 brew install ImageMagick
-brew install ghostscript
-brew install autoconf
 brew install redis
-brew install beanstalkd
-brew install poppler
 brew install pkg-config
 brew install pcre
 brew install dnsmasq
 brew install cloc
-brew install swiftlint
 brew install xctool
 brew install libimobiledevice
+brew install openssl
+brew install awscli
 
-# Make Redis, and beanstalkd autostart
+# Make Redis autostart
 brew services start redis
-brew services start beanstalkd
 
 # Set up localhost subdomain resolution with dnsmasq
 echo conf-dir=/usr/local/etc/dnsmasq.d > /usr/local/etc/dnsmasq.conf

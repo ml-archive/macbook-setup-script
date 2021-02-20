@@ -1,8 +1,5 @@
 #!/bin/bash -f
 
-# PlistBuddy is a command for writing complex Plist values
-PLISTBUDDY=/usr/libexec/PlistBuddy
-
 # grant this user access to the sudo commands without passwords
 # add all required cmds to the CMDS alias
 sudo mkdir -p /etc/sudoers.d
@@ -12,9 +9,13 @@ END
 
 # Set some sensible defaults for Finder
 # Show all hidden files by default, and restart Finder to enable.
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath file://$HOME # New window starts at $HOME.
 defaults write com.apple.finder AppleShowAllFiles YES
 # killall -HUP Finder # too extreme to kill finder we should figure out how tor re-launch instead.
+
+# Some other defaults
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Set hostname to localhost
 sudo scutil --set HostName localhost
@@ -31,17 +32,19 @@ echo '; highlighting should work
 ' > ~/.emacs
 
 # Set some good default terminal settings
-TERMINAL_CONF=com.apple.Terminal
-TERMINAL_CONF_PATH=~/Library/Preferences/$TERMINAL_CONF.plist
-$PLISTBUDDY -c "Set 'Default Window Settings' Pro" $TERMINAL_CONF_PATH
-$PLISTBUDDY -c "Set 'Startup Window Settings' Pro" $TERMINAL_CONF_PATH
-$PLISTBUDDY -c "Add 'Window Settings:Pro:useOptionAsMetaKey' bool YES" $TERMINAL_CONF_PATH
+TERMINAL_CONF_PATH=~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set 'Default Window Settings' Novel" $TERMINAL_CONF_PATH
+/usr/libexec/PlistBuddy -c "Set 'Startup Window Settings' Novel" $TERMINAL_CONF_PATH
+/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Novel:useOptionAsMetaKey bool true" $TERMINAL_CONF_PATH
 
 # Setup Common Packages
 sh common.sh
 
-# Setup bash
-sh bash-setup.sh
+# Setup terminal both for bash and zsh.
+sh terminal-setup.sh
+
+# Run if you want to use bash instead of zsh.
+#sh use-bash.sh
 
 # Setup Common Applications
 sh applications/install/run.sh

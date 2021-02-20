@@ -13,7 +13,6 @@ brew services start httpd
 # Now that brew has finished with installing we will setup the config file.
 
 # Check that httpd is where we expect it, if it is not something is wrong and we shouldn't continue.
-# The likely cause of this is the script is most likely outdated.
 if [ ! -d /usr/local/etc/httpd ]; then
     echo "${RED}httpd was not found in the expected directory!${NC}"
     echo "${RED}This script depends on httpd.conf to be loaded in from /usr/local/etc/httpd ${NC}"
