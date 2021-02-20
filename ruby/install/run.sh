@@ -19,11 +19,6 @@ esac
 
 gem install bundler
 gem install grb
-gem install cocoapods
-gem install xcode-install
-gem install slather
-gem install xcpretty
-gem install fastlane
 source ${DIR}/install_rails.sh
 
 if [[ "${choice}" == "rbenv" ]]; then
