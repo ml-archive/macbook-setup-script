@@ -9,10 +9,6 @@ if [ ! ${IS_COLOR_SOURCED} ]; then
 fi
 
 echo "${GREEN}Installing... ${BROWN}go...${NC}"
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
 
 brew install go
-go get golang.org/x/tools/cmd/godoc
-go get github.com/golang/lint/golint
-go get golang.org/x/tools/cmd/vet
+go get -u golang.org/x/lint/golint

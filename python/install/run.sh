@@ -7,9 +7,11 @@ if [ ! ${IS_COLOR_SOURCED} ]; then
 fi
 
 echo "${GREEN}Installing... ${BROWN}python...${NC}"
-brew install python python@2
-pip3 install awscli
-pip3 install awsebcli
-pip3 install virtualenv
-pip3 install lizard
-pip3 install source
+brew update
+brew install pyenv
+brew install pipx
+pipx ensurepath
+pipx completions
+pyenv install 3.9.1
+pyenv global 3.9.1
+pipx install virtualenv
